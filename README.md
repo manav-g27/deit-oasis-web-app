@@ -5,7 +5,7 @@ A deep learning web application for **Alzheimer's disease stage classification**
 ---
 
 <p align="center">
-  <img src="assests/screenshot.png" width="100%">
+  <img src="assests/screenshot2.png" width="100%">
 </p>
 
 ## 📌 Overview

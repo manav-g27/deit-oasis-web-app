@@ -215,4 +215,10 @@ Upload a brain MRI image to classify Alzheimer's disease stage using a trained D
 )
 
 if __name__ == "__main__":
-    demo.launch(server_name="0.0.0.0", server_port=7866, share=False)
+    port = int(os.environ.get("PORT", 7866))
+
+    demo.launch(
+        server_name="0.0.0.0",
+        server_port=port,
+        share=False
+    )

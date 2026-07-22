@@ -12,8 +12,23 @@ from PIL import Image
 from torchvision import transforms
 
 # =============== USER CONFIG ===============
+import os
+import urllib.request
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-MODEL_PATH = os.path.join(BASE_DIR, "models", "alz_vit.pt")
+
+MODEL_DIR = os.path.join(BASE_DIR, "models")
+MODEL_PATH = os.path.join(MODEL_DIR, "alz_vit.pt")
+
+MODEL_URL = "https://github.com/manav-g27/deit-oasis-web-app/releases/tag/v1.0"
+
+os.makedirs(MODEL_DIR, exist_ok=True)
+
+if not os.path.exists(MODEL_PATH):
+    print("Downloading model...")
+    urllib.request.urlretrieve(MODEL_URL, MODEL_PATH)
+    print("Model downloaded successfully!")
+
 MODEL_NAME = "deit_base_patch16_224"  # *_384 if trained at 384
 IMG_SIZE = 224
 NUM_CLASSES = 4

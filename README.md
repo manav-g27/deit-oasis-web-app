@@ -4,6 +4,10 @@ A deep learning web application for **Alzheimer's disease stage classification**
 
 ---
 
+<p align="center">
+  <img src="assests/screenshot.png" width="100%">
+</p>
+
 ## 📌 Overview
 
 This project demonstrates an end-to-end deep learning pipeline that classifies brain MRI images into one of four Alzheimer's disease stages using a pretrained **Vision Transformer (DeiT)** model.

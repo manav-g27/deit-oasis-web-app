@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_DIR = os.path.join(BASE_DIR, "models")
 MODEL_PATH = os.path.join(MODEL_DIR, "alz_vit.pt")
 
-MODEL_URL = "https://github.com/manav-g27/deit-oasis-web-app/releases/tag/v1.0"
+MODEL_URL = "https://github.com/manav-g27/deit-oasis-web-app/releases/download/v1.0/alz_vit.pt"
 
 os.makedirs(MODEL_DIR, exist_ok=True)
 

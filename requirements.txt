@@ -1,4 +1,6 @@
-gradio
+torch
+torchvision
 timm
+gradio
 pillow
 safetensors

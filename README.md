@@ -1,92 +1,104 @@
-# 🧠 Alzheimer's Disease Detection using Vision Transformer (DeiT)
-
-A deep learning web application for **Alzheimer's disease stage classification** from brain MRI images using a **Data-efficient Image Transformer (DeiT)** model built with **PyTorch**, **timm**, and **Gradio**.
-
----
+# 🧠 Alzheimer's Disease Detection using Vision Transformers
 
 <p align="center">
-  <img src="assests/screenshot2.png" width="100%">
+
+![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python)
+![PyTorch](https://img.shields.io/badge/PyTorch-2.x-red?logo=pytorch)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688?logo=fastapi)
+![ONNX Runtime](https://img.shields.io/badge/ONNX_Runtime-Optimized-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Render](https://img.shields.io/badge/Deployment-Render-black?logo=render)
+
 </p>
 
-## 📌 Overview
+A production-ready deep learning application for **Alzheimer's Disease Stage Classification** from brain MRI images using **Vision Transformers (ViT/DeiT/BEiT)**.
 
-This project demonstrates an end-to-end deep learning pipeline that classifies brain MRI images into one of four Alzheimer's disease stages using a pretrained **Vision Transformer (DeiT)** model.
+The project includes:
 
-The application provides an intuitive web interface where users can upload an MRI image and receive:
-
-- Predicted Alzheimer's disease stage
-- Prediction confidence for each class
-
-> **Research Prototype:** This project is intended for research and educational purposes only.
+- 🔬 Research prototype built with **PyTorch + Gradio**
+- ⚡ Optimized **FastAPI + ONNX Runtime** inference server
+- 🌐 Lightweight deployment using **Render**
+- 🧠 Quantized model for efficient CPU inference
 
 ---
 
-## 🚀 Features
-
-- ✅ Vision Transformer (DeiT) based classification
-- ✅ Interactive Gradio web interface
-- ✅ Automatic model download on first launch
-- ✅ Confidence score for every class
-- ✅ CPU and GPU support
-- ✅ Easy local deployment
-- ✅ Cross-platform (Windows, Linux, macOS)
-
----
-
-## 🧠 Model
-
-**Architecture:** DeiT (Data-efficient Image Transformer)
-
-**Framework:** PyTorch + timm
-
-**Input Size:** 224 × 224 RGB MRI Images
-
-**Output Classes:**
-
-- 🟢 Non Demented
-- 🟡 Very Mild Dementia
-- 🟠 Mild Dementia
-- 🔴 Moderate Dementia
-
----
-
-## 🖥️ Demo
-
-Upload a brain MRI image and the application predicts the Alzheimer's disease stage.
+# 📸 Application Preview
 
 <p align="center">
-
-*(Add a screenshot or GIF here)*
-
+<img src="assets/screenshot2.png" width="95%">
 </p>
 
 ---
 
-## 📂 Project Structure
+# 📌 Overview
 
-```text
-deit-oasis-web-app/
-│
-├── app.py
-├── requirements.txt
-├── README.md
-├── classes.txt
-├── .gitignore
-│
-├── examples/
-│
-└── models/
+This project classifies brain MRI scans into four Alzheimer's disease stages using pretrained Vision Transformer architectures.
+
+### Predicted Classes
+
+| Class | Description |
+|--------|-------------|
+| 🟢 Non Demented | Healthy Brain |
+| 🟡 Very Mild Dementia | Early Cognitive Impairment |
+| 🟠 Mild Dementia | Alzheimer's Disease |
+| 🔴 Moderate Dementia | Advanced Alzheimer's |
+
+The application automatically preprocesses uploaded MRI images and returns:
+
+- Predicted stage
+- Confidence score
+- Class probabilities
+- Inference latency
+
+---
+
+# ✨ Features
+
+- 🧠 Vision Transformer-based MRI classification
+- ⚡ ONNX Runtime optimized inference
+- 🚀 FastAPI REST API
+- 🌐 Interactive Web Interface
+- 📊 Confidence probability for each class
+- 📈 Low latency CPU inference
+- 💾 Quantized INT8 model
+- ☁️ Cloud deployment ready
+- 🔄 Automatic model download from GitHub Releases
+
+---
+
+# 🏗 Project Architecture
+
+```
+               MRI Image
+                    │
+                    ▼
+          Image Preprocessing
+      Resize → Normalize → Tensor
+                    │
+                    ▼
+         Vision Transformer Model
+            (ONNX Runtime CPU)
+                    │
+                    ▼
+      Softmax Probability Prediction
+                    │
+                    ▼
+          JSON Diagnostic Response
 ```
 
 ---
 
-## ⚙️ Installation
+# 🚀 Local Installation
 
 Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/deit-oasis-web-app.git
+git clone https://github.com/manav-g27/deit-oasis-web-app.git
+```
 
+Move into the project
+
+```bash
 cd deit-oasis-web-app
 ```
 
@@ -102,93 +114,160 @@ Run the application
 python app.py
 ```
 
----
-
-## 📥 Automatic Model Download
-
-The trained model is **not stored in the repository** because of GitHub's file size limitations.
-
-When the application is launched for the first time, it automatically downloads the pretrained model (~330 MB) from the project's GitHub Release.
-
-Subsequent runs use the locally cached model.
+The pretrained model (~330 MB) is downloaded automatically on the first launch.
 
 ---
 
-## 📊 Prediction Pipeline
+# 🌍 Live Deployment
 
-```text
-Brain MRI
-     │
-     ▼
-Image Preprocessing
-     │
-     ▼
-Resize (224 × 224)
-     │
-     ▼
-DeiT Vision Transformer
-     │
-     ▼
-Softmax
-     │
-     ▼
-Predicted Alzheimer's Stage
+### Frontend
+
+
+```
+https://huggingface.co/spaces/manav-g27/alzheimers-diagnostic-ui
+```
+
+### Backend API
+
+
+```
+https://alzheimers-api-backend.onrender.com/predict
 ```
 
 ---
 
-## 🛠️ Technologies Used
+# 📡 REST API
+
+## POST `/predict`
+
+Upload a brain MRI image.
+
+### Request
+
+```
+multipart/form-data
+
+image=<MRI Image>
+```
+
+### Response
+
+```json
+{
+  "prediction": "Very Mild Dementia",
+  "confidence": 0.8942,
+  "probabilities": {
+    "Non Demented": 0.0735,
+    "Very Mild Dementia": 0.8942,
+    "Mild Dementia": 0.0312,
+    "Moderate Dementia": 0.0011
+  },
+  "inference_time_ms": 42.15
+}
+```
+
+---
+
+# ⚙️ Technology Stack
+
+## Deep Learning
 
 - Python
 - PyTorch
-- timm
 - TorchVision
-- Gradio
+- timm
+- ONNX Runtime
+
+## Backend
+
+- FastAPI
+- Uvicorn
+- NumPy
 - Pillow
 
----
+## Frontend
 
-## 💡 Future Improvements
+- Gradio
+- HTML
+- CSS
 
-- Support multiple Vision Transformer architectures
-- Explainable AI (Grad-CAM / Attention Maps)
-- Batch prediction
-- Docker deployment
-- Cloud deployment
-- Clinical validation on external datasets
+## Deployment
 
----
-
-## 📄 Research
-
-This project was developed as part of research on Vision Transformers for Alzheimer's disease classification from MRI images.
+- Render
+- GitHub Releases
 
 ---
 
-## ⚠️ Disclaimer
+# 📂 Project Structure
 
-This software is intended **only for research and educational purposes**.
-
-It is **not a medical device** and **must not be used for clinical diagnosis, treatment planning, or patient care**.
-
-Predictions generated by this application should always be interpreted by qualified healthcare professionals.
+```
+deit-oasis-web-app/
+│
+├── app.py
+├── predictor.py
+├── requirements.txt
+├── assets/
+│     └── screenshot2.png
+│
+├── models/
+│
+├── utils/
+│
+└── README.md
+```
 
 ---
 
-## 📜 License
+# ⚡ Performance Optimizations
 
-This project is released under the **MIT License**.
+- Exported PyTorch model to ONNX
+- Dynamic INT8 Quantization
+- Optimized CPU inference
+- Reduced model size
+
+| Before | After |
+|---------|--------|
+| 330 MB | 85 MB |
+| PyTorch | ONNX Runtime |
+| High RAM | Low RAM |
+| Slower | Faster |
 
 ---
 
-## 👨‍💻 Author
+# 🔮 Future Improvements
 
-**Manav Gupta**
+- Explainable AI (Grad-CAM)
+- Batch prediction support
+- PostgreSQL integration
+- User authentication
+- Clinical evaluation using ADNI
+- Docker Compose deployment
+- GPU inference support
 
-M.Tech Computer Science
+---
+
+# ⚠️ Disclaimer
+
+> **This software is intended solely for research and educational purposes.**
+
+It is **NOT** a medical device and **must not** be used for clinical diagnosis, treatment planning, or patient care.
+
+All predictions should be interpreted only by qualified healthcare professionals.
+
+---
+
+# 📄 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+# 👨‍💻 Author
+
+## Manav Gupta
+
+**M.Tech Computer Science**
 
 Deep Learning • Computer Vision • Medical AI
 
----
-
-⭐ If you found this project useful, consider giving it a star!
+⭐ If you found this project helpful, please consider giving it a **Star**.

@@ -59,7 +59,7 @@ The application automatically preprocesses uploaded MRI images and returns:
 - 🚀 FastAPI REST API
 - 🌐 Interactive Web Interface
 - 📊 Confidence probability for each class
-- 📈 Low latency CPU inference
+- 📈 Low-latency CPU inference
 - 💾 Quantized INT8 model
 - ☁️ Cloud deployment ready
 - 🔄 Automatic model download from GitHub Releases
@@ -131,7 +131,7 @@ https://huggingface.co/spaces/manav-g27/alzheimers-diagnostic-ui
 
 
 ```
-https://alzheimers-api-backend.onrender.com/predict
+https://alzheimers-api-backend.onrender.com
 ```
 
 ---

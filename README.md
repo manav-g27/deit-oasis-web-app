@@ -25,7 +25,7 @@ The project includes:
 # 📸 Application Preview
 
 <p align="center">
-<img src="assets/screenshot2.png" width="95%">
+<img src="assests/screenshot2.png" width="95%">
 </p>
 
 ---

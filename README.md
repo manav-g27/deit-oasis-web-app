@@ -22,7 +22,7 @@ The project includes:
 
 ---
 
-# 📸 Application Preview
+# 📸 Local Web App Preview
 
 <p align="center">
 <img src="assests/screenshot2.png" width="95%">
